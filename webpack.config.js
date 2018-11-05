@@ -46,9 +46,11 @@ module.exports = {
         use: [
           isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           {
-            loader: 'css-loader',
+            loader: 'typings-for-css-modules-loader',
             query: {
               modules: true,
+              namedExport: true,
+              camelCase: true,
               sourceMap: !isProduction,
               importLoaders: 1,
               localIdentName: isProduction
@@ -57,11 +59,7 @@ module.exports = {
             }
           },
           {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: []
-            }
+            loader: 'postcss-loader'
           }
         ]
       },
